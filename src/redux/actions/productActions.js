@@ -16,12 +16,6 @@ export const fetchProducts = () => {
       .then((response) => response.data)
       .catch((error) => console.log(error));
 
-    const products = [];
-
-    data.forEach((value) => {
-      products.push(value);
-    });
-
     dispatch({
       type: ActionTypes.FETCH_PRODUCTS,
       payload: data,
