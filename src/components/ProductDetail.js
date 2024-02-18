@@ -67,7 +67,7 @@ const ProductDetail = () => {
                 <Typography variant="h5" color="blue-gray">
                   <span>{title}</span>
                 </Typography>
-                <Typography>
+                <Typography className="h-[200px] overflow-hidden">
                   <span>{description}</span>
                 </Typography>
               </CardBody>
