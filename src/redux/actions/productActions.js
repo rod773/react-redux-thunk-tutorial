@@ -1,21 +1,31 @@
 import { ActionTypes } from "./../constants/actionTypes";
-import { axios } from "axios";
+import axios from "axios";
 
-export const fetchProducts = async () => {
-  const config = {
-    method: "GET",
-    url: "/products",
-    headers: {
-      "Cpntent-Type": "aplication/json",
-      Acept: "aplication/json",
-    },
-  };
+export const fetchProducts = () => {
+  return async (dispatch) => {
+    const config = {
+      url: "https://fakestoreapi.com/products",
+      method: "GET",
+      headers: {
+        "Content-Type": "aplication/json",
+        Acept: "aplication/json",
+      },
+    };
 
-  const response = await axios(config).catch((error) => console.log(error));
+    const data = await axios(config)
+      .then((response) => response.data)
+      .catch((error) => console.log(error));
 
-  return {
-    type: ActionTypes.FETCH_PRODUCTS,
-    payload: response,
+    const products = [];
+
+    data.forEach((value) => {
+      products.push(value);
+    });
+
+    dispatch({
+      type: ActionTypes.FETCH_PRODUCTS,
+      payload: products,
+    });
   };
 };
 
