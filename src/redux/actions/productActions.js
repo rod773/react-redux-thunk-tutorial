@@ -24,7 +24,7 @@ export const fetchProducts = () => {
 
     dispatch({
       type: ActionTypes.FETCH_PRODUCTS,
-      payload: products,
+      payload: data,
     });
   };
 };
